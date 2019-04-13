@@ -7,13 +7,12 @@
 		<artifactId>VistaAdminApp</artifactId>
 		<version>1.0</version>
 	</parent>
-	<artifactId>VistaAdminWebServiceModule</artifactId>
-
+	<artifactId>VistaAdminWebService</artifactId>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.myapps.vista_admin</groupId>
-			<artifactId>VistaAdminRepositoryModule</artifactId>
+			<artifactId>VistaAdminBusiness</artifactId>
 			<version>1.0</version>
 		</dependency>
 		<dependency>

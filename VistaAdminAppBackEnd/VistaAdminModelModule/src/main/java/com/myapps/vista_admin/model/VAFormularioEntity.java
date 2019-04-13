@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "VA_FORMULARIOS")
 public class VAFormularioEntity {
@@ -17,16 +19,17 @@ public class VAFormularioEntity {
 	@Id
 	@SequenceGenerator(name = "SEQ_VA_FORMULARIOS_GENERATOR", sequenceName = "SEQ_VA_FORMULARIOS", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_VA_FORMULARIOS_GENERATOR")
-	private int idFormulario;
+	@Column(name = "ID_FORMULARIO")
+	private Integer idFormulario;
 	@Column
 	private String etiqueta;
 	@Column
 	private Integer nivel;
 	@Column
-	private String path;
+	private String url;
 	@Column
 	private Boolean estado;
-
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "MENU", nullable = true, referencedColumnName = "ID_MENU")
 	private VAMenuEntity menu;
@@ -55,12 +58,16 @@ public class VAFormularioEntity {
 		this.nivel = nivel;
 	}
 
-	public String getPath() {
-		return path;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setPath(String path) {
-		this.path = path;
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public void setIdFormulario(Integer idFormulario) {
+		this.idFormulario = idFormulario;
 	}
 
 	public Boolean getEstado() {
@@ -81,8 +88,8 @@ public class VAFormularioEntity {
 
 	@Override
 	public String toString() {
-		return "AdminFormularioEntity [idFormulario=" + idFormulario + ", etiqueta=" + etiqueta + ", nivel=" + nivel
-				+ ", path=" + path + ", estado=" + estado + "]";
+		return "VAFormularioEntity [idFormulario=" + idFormulario + ", etiqueta=" + etiqueta + ", nivel=" + nivel
+				+ ", url=" + url + ", estado=" + estado + ", menu=" + menu + "]";
 	}
 
 }

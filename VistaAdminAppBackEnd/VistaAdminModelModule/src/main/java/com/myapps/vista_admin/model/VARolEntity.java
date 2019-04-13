@@ -15,6 +15,7 @@ public class VARolEntity {
 	@Id
 	@SequenceGenerator(name = "SEQ_VA_ROLES_GENERATOR", sequenceName = "SEQ_VA_ROLES", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_VA_ROLES_GENERATOR")
+	@Column(name="ID_ROL")
 	private Integer idRol;
 	@Column
 	private String nombre;
