@@ -1,7 +1,9 @@
 package com.myapps.vista_admin.business.impl;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,26 +37,29 @@ public class MenuBusinessImpl implements MenuBusiness {
 	@Override
 	public List<VAMenuEntity> getByRol(String rol) {
 		List<VAFormularioEntity> formularios = formRepository.findByRol(rol);
-		List<VAMenuEntity> menu = getMenuOfFormulario(formularios);
-		menu.forEach(m-> System.out::print(""));
-		return menuRepository.findByRol(rol);
+		List<VAMenuEntity> menu = obtenerMunusDeFormularioList(formularios);
+		return cambiarOrdenarFormularioLisDeMenu(menu, formularios);
 	}
 
-	public List<VAMenuEntity> getMenuOfFormulario(List<VAFormularioEntity> formularios) {
+	public List<VAMenuEntity> obtenerMunusDeFormularioList(List<VAFormularioEntity> formularios) {
 		List<VAMenuEntity> menus = new ArrayList<>();
-		for (VAFormularioEntity form : formularios) {
-			if (menus.size() > 0) {
-				int validador = 0;
-				for (VAMenuEntity menu : menus) {
-					if (menu.getIdMenu() == form.getMenu().getIdMenu()) {
-						validador++;
-						break;
-					}
-				}
-				if (validador <= 0)
-					menus.add(form.getMenu());
-				validador = 0;
+		formularios.forEach(f -> {
+			if (!menus.contains(f.getMenu()))
+				menus.add(f.getMenu());
+		});
+		return menus;
+	}
+
+	public List<VAMenuEntity> cambiarOrdenarFormularioLisDeMenu(List<VAMenuEntity> menus,
+			List<VAFormularioEntity> formularios) {
+		for (VAMenuEntity menu : menus) {
+			menu.getFormularios().clear();
+			for (VAFormularioEntity form : formularios) {
+				if (menu.getIdMenu().equals(form.getMenu().getIdMenu()))
+					menu.getFormularios().add(form);
 			}
+			menu.setFormularios(menu.getFormularios().stream()
+					.sorted(Comparator.comparing(VAFormularioEntity::getIdFormulario)).collect(Collectors.toList()));
 		}
 		return menus;
 	}
