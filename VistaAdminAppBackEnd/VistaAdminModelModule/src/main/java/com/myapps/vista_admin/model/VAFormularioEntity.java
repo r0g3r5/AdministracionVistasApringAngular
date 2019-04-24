@@ -26,6 +26,8 @@ public class VAFormularioEntity {
 	private String url;
 	@Column
 	private Boolean estado;
+	@Column
+	private String icono;
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "MENU", nullable = true, referencedColumnName = "ID_MENU")
@@ -37,6 +39,14 @@ public class VAFormularioEntity {
 
 	public void setIdFormulario(int idFormulario) {
 		this.idFormulario = idFormulario;
+	}
+
+	public String getIcono() {
+		return icono;
+	}
+
+	public void setIcono(String icono) {
+		this.icono = icono;
 	}
 
 	public String getEtiqueta() {

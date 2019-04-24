@@ -5,5 +5,6 @@ export class Menu {
   etiqueta: string;
   estado: boolean;
   orden: number;
+  icono:string;
   formularios: Formulario[];
 }

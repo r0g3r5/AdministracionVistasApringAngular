@@ -12,7 +12,14 @@ import { PanelMenuModule } from "primeng/panelmenu";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MenuItem } from "primeng/api";
 import { HttpClientModule } from "@angular/common/http";
-
+import { InputTextModule } from "primeng/inputtext";
+import { PasswordModule } from "primeng/password";
+import { ButtonModule } from "primeng/button";
+import { FieldsetModule } from "primeng/fieldset";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MessageModule } from "primeng/message";
+import { ConfigRolesComponent } from './pages/configuracion/config-roles/config-roles.component';
+import { ConfigUsuariosComponent } from './pages/configuracion/config-usuarios/config-usuarios.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,14 +27,23 @@ import { HttpClientModule } from "@angular/common/http";
     InicioComponent,
     NavComponent,
     HeaderComponent,
-    SeguridadComponent
+    SeguridadComponent,
+    ConfigRolesComponent,
+    ConfigUsuariosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    PanelMenuModule
+    PanelMenuModule,
+    InputTextModule,
+    PasswordModule,
+    ButtonModule,
+    FieldsetModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MessageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

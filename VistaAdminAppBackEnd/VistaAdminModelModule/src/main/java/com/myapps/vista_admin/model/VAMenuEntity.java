@@ -25,12 +25,22 @@ public class VAMenuEntity {
 	private Boolean estado;
 	@Column
 	private Integer orden;
+	@Column
+	private String icono;
 	@OneToMany(mappedBy = "menu", cascade = { CascadeType.PERSIST, CascadeType.MERGE,
 			CascadeType.REMOVE }, fetch = FetchType.EAGER, orphanRemoval = true)
 	private List<VAFormularioEntity> formularios;
 
 	public Integer getOrden() {
 		return orden;
+	}
+
+	public String getIcono() {
+		return icono;
+	}
+
+	public void setIcono(String icono) {
+		this.icono = icono;
 	}
 
 	public void setOrden(Integer orden) {

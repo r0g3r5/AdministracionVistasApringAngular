@@ -6,5 +6,6 @@ export class Formulario {
   nivel: number;
   url: string;
   estado: boolean;
+  icono: string;
   menu: Menu;
 }

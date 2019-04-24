@@ -1,3 +1,49 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <div class="row justify-content-md-center mt-5">
+    <div class="col-md-auto">
+      <div class="col-md-12">
+        <p-fieldset legend="Login"
+          ><form [formGroup]="loginForm" (ngSubmit)="autenticar()">
+            <div class="form-group">
+              <span class="ui-float-label">
+                <input
+                  formControlName="nombreUsuario"
+                  class="w-100"
+                  id="float-input"
+                  type="text"
+                  size="30"
+                  pInputText
+                />
+                <label for="float-input">Nombre de Usuario</label>
+              </span>
+            </div>
+            <div class="form-group">
+              <span class="ui-float-label">
+                <input
+                  formControlName="clave"
+                  class="w-100"
+                  type="password"
+                  pPassword
+                  [feedback]="password"
+                  [showPassword]="password"
+                />
+                <label for="float-input">Contrasena</label>
+              </span>
+            </div>
+            <div class="text-right">
+              <button
+                pButton
+                type="submit"
+                icon="pi pi-check"
+                iconPos="left"
+                label="Aceptar"
+                class="ui-button-info"
+              ></button>
+            </div>
+            <div class="alert alert-danger mt-3" *ngIf="msj">{{ msj }}</div>
+          </form>
+        </p-fieldset>
+      </div>
+    </div>
+  </div>
+</div>
