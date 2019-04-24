@@ -47,7 +47,7 @@ public class MenuBusinessImpl implements MenuBusiness {
 			if (!menus.contains(f.getMenu()))
 				menus.add(f.getMenu());
 		});
-		removeMenu(menus, menus.get(0));
+//		removeMenu(menus, menus.get(0));
 		return menus;
 	}
 

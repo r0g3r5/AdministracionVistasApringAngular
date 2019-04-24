@@ -17,7 +17,11 @@ export class NavComponent implements OnInit {
       responseMenu.forEach(menu => {
         let itemsHijos: MenuItem[] = [];
         menu.formularios.forEach(form => {
-          itemsHijos.push({ label: form.etiqueta, icon: form.icono });
+          itemsHijos.push({
+            label: form.etiqueta,
+            icon: form.icono,
+            routerLink: form.url
+          });
         });
         this.items.push({
           label: menu.etiqueta,
@@ -25,7 +29,7 @@ export class NavComponent implements OnInit {
           items: itemsHijos
         });
       });
-      // this.items = responseMenu;
+      //  this.items = responseMenu;
     });
   }
 }

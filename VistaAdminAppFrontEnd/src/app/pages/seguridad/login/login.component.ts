@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     let userName = this.loginForm.value["nombreUsuario"];
     let password = this.loginForm.value["clave"];
     if (userName != "" && password != "") {
-      this.router.navigate(["/inicio"]);
+      this.router.navigate(["/adminvista"]);
     } else {
       this.msj = "Usurio o password incorrectos...!";
     }

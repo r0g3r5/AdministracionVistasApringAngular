@@ -18,8 +18,13 @@ import { ButtonModule } from "primeng/button";
 import { FieldsetModule } from "primeng/fieldset";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MessageModule } from "primeng/message";
-import { ConfigRolesComponent } from './pages/configuracion/config-roles/config-roles.component';
-import { ConfigUsuariosComponent } from './pages/configuracion/config-usuarios/config-usuarios.component';
+import { ConfigRolesComponent } from "./pages/configuracion/config-roles/config-roles.component";
+import { ConfigUsuariosComponent } from "./pages/configuracion/config-usuarios/config-usuarios.component";
+import { RolesEditarComponent } from "./pages/configuracion/config-roles/roles-editar/roles-editar.component";
+import { RolesListarComponent } from "./pages/configuracion/config-roles/roles-listar/roles-listar.component";
+import { ContenedorComponent } from "./_templates/contenedor/contenedor.component";
+import { TableModule } from "primeng/table";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +34,10 @@ import { ConfigUsuariosComponent } from './pages/configuracion/config-usuarios/c
     HeaderComponent,
     SeguridadComponent,
     ConfigRolesComponent,
-    ConfigUsuariosComponent
+    ConfigUsuariosComponent,
+    RolesEditarComponent,
+    RolesListarComponent,
+    ContenedorComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +51,8 @@ import { ConfigUsuariosComponent } from './pages/configuracion/config-usuarios/c
     FieldsetModule,
     FormsModule,
     ReactiveFormsModule,
-    MessageModule
+    MessageModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
