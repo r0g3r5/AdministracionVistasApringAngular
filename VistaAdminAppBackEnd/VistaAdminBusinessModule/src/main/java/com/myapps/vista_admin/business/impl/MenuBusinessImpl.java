@@ -47,7 +47,14 @@ public class MenuBusinessImpl implements MenuBusiness {
 			if (!menus.contains(f.getMenu()))
 				menus.add(f.getMenu());
 		});
+		removeMenu(menus,menus.get(0));
 		return menus;
+	}
+
+	public void removeMenu(List<VAMenuEntity> menus,VAMenuEntity menu) {
+		System.out.println("nemus removidos init " + menus);
+		menus.remove(menu);
+		System.out.println("nemus removidos " + menus);
 	}
 
 	public List<VAMenuEntity> cambiarOrdenarFormularioLisDeMenu(List<VAMenuEntity> menus,
