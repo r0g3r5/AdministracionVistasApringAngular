@@ -15,6 +15,7 @@ export class RolesListarComponent implements OnInit {
     console.log("listando roles.....");
     this.rolService.searchByEstadoActived().subscribe(data => {
       this.roles = data;
+      console.log(JSON.stringify(this.roles))
     });
   }
 }
