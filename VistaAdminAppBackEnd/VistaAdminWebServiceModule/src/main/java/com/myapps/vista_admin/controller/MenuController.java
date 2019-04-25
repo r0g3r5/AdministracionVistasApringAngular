@@ -21,6 +21,6 @@ public class MenuController {
 
 	@GetMapping(value = "/listByRol")
 	public ResponseEntity<List<VAMenuEntity>> listByRol(@RequestParam("rol") String rol) {
-		return new ResponseEntity<>(menuBusiness.getByRol(rol), HttpStatus.OK);
+		return new ResponseEntity<>(menuBusiness.getByAtribute(rol), HttpStatus.OK);
 	}
 }

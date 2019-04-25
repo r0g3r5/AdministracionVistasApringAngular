@@ -8,5 +8,9 @@ public interface BusinessMaster<T> {
 
 	List<T> getByAll();
 
-	List<T> getByRol(String rol);
+	List<T> getByAtribute(String rol);
+
+	Long toRegister(T model);
+
+	Long toUpdate(T model);
 }

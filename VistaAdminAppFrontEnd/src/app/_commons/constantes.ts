@@ -1,0 +1,1 @@
+export const URL_SERVIDOR_BACKEND="http://localhost:8087";

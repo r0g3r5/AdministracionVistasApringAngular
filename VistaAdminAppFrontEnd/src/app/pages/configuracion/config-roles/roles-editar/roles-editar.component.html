@@ -1,3 +1,22 @@
-<p>
-  roles-editar works!
-</p>
+<div class="ui-g-10">
+  <span class="ui-float-label">
+    <input [(ngModel)]="nombre" id="nombre-rol" type="text" size="30" pInputText />
+    <label for="nombre-rol">Nombre del rol</label>
+  </span>
+</div>
+<div class="ui-g-10">
+  <h6 class="first">Estado - {{ estado ? "Habilitado" : "Inavilitado" }}</h6>
+  <p-inputSwitch [(ngModel)]="estado"></p-inputSwitch>
+</div>
+<div class="ui-g-10">
+  <span class="ui-float-label">
+    <input [(ngModel)]="descripcion" id="descripcion" type="text" size="30" pInputText />
+    <label for="descripcion">Descripcion</label>
+  </span>
+</div>
+<div class="ui-md-10">
+  <div class="ui-g-10"></div>
+  <div class="ui-g-2">
+    <button pButton label="Guardar" (click)="accion()" type="button"></button>
+  </div>
+</div>

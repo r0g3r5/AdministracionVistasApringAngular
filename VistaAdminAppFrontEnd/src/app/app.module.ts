@@ -10,7 +10,7 @@ import { HeaderComponent } from "./_templates/header/header.component";
 import { SeguridadComponent } from "./pages/seguridad/seguridad.component";
 import { PanelMenuModule } from "primeng/panelmenu";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MenuItem } from "primeng/api";
+import { MenuItem, MessageService } from "primeng/api";
 import { HttpClientModule } from "@angular/common/http";
 import { InputTextModule } from "primeng/inputtext";
 import { PasswordModule } from "primeng/password";
@@ -24,6 +24,8 @@ import { RolesEditarComponent } from "./pages/configuracion/config-roles/roles-e
 import { RolesListarComponent } from "./pages/configuracion/config-roles/roles-listar/roles-listar.component";
 import { ContenedorComponent } from "./_templates/contenedor/contenedor.component";
 import { TableModule } from "primeng/table";
+import { InputSwitchModule } from "primeng/inputswitch";
+import { ToastModule } from "primeng/toast";
 
 @NgModule({
   declarations: [
@@ -52,9 +54,11 @@ import { TableModule } from "primeng/table";
     FormsModule,
     ReactiveFormsModule,
     MessageModule,
-    TableModule
+    TableModule,
+    InputSwitchModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -34,13 +34,6 @@ public class MenuBusinessImpl implements MenuBusiness {
 		return null;
 	}
 
-	@Override
-	public List<VAMenuEntity> getByRol(String rol) {
-		List<VAFormularioEntity> formularios = formRepository.findByRol(rol);
-		List<VAMenuEntity> menu = obtenerMunusDeFormularioList(formularios);
-		return cambiarOrdenarFormularioLisDeMenu(menu, formularios);
-	}
-
 	public List<VAMenuEntity> obtenerMunusDeFormularioList(List<VAFormularioEntity> formularios) {
 		List<VAMenuEntity> menus = new ArrayList<>();
 		formularios.forEach(f -> {
@@ -69,6 +62,25 @@ public class MenuBusinessImpl implements MenuBusiness {
 					.sorted(Comparator.comparing(VAFormularioEntity::getIdFormulario)).collect(Collectors.toList()));
 		}
 		return menus;
+	}
+
+	@Override
+	public List<VAMenuEntity> getByAtribute(String rol) {
+		List<VAFormularioEntity> formularios = formRepository.findByRol(rol);
+		List<VAMenuEntity> menu = obtenerMunusDeFormularioList(formularios);
+		return cambiarOrdenarFormularioLisDeMenu(menu, formularios);
+	}
+
+	@Override
+	public Long toRegister(VAMenuEntity model) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Long toUpdate(VAMenuEntity model) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
