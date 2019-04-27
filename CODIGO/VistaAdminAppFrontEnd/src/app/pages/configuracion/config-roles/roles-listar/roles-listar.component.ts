@@ -26,4 +26,11 @@ export class RolesListarComponent implements OnInit {
   navegarRolNuevo() {
     this.router.navigate(["nuevo"], { relativeTo: this.route });
   }
+  modificar(rol: Rol) {
+    console.log("modificar " + JSON.stringify(rol));
+  }
+
+  remover(rol: Rol) {
+    console.log("eliminar " + JSON.stringify(rol));
+  }
 }
