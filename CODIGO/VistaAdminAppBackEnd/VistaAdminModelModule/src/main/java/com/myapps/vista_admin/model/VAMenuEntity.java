@@ -18,40 +18,24 @@ public class VAMenuEntity {
 //	@SequenceGenerator(name = "SEQ_VA_MENUS_GENERATOR", sequenceName = "SEQ_VA_MENUS", allocationSize = 1)
 //	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_VA_MENUS_GENERATOR")
 	@Column(name = "ID_MENU")
-	private Integer idMenu;
+	private int idMenu;
 	@Column
 	private String etiqueta;
 	@Column
-	private Boolean estado;
+	private boolean estado;
 	@Column
-	private Integer orden;
+	private int orden;
 	@Column
 	private String icono;
 	@OneToMany(mappedBy = "menu", cascade = { CascadeType.PERSIST, CascadeType.MERGE,
 			CascadeType.REMOVE }, fetch = FetchType.EAGER, orphanRemoval = true)
 	private List<VAFormularioEntity> formularios;
 
-	public Integer getOrden() {
-		return orden;
-	}
-
-	public String getIcono() {
-		return icono;
-	}
-
-	public void setIcono(String icono) {
-		this.icono = icono;
-	}
-
-	public void setOrden(Integer orden) {
-		this.orden = orden;
-	}
-
-	public Integer getIdMenu() {
+	public int getIdMenu() {
 		return idMenu;
 	}
 
-	public void setIdMenu(Integer idMenu) {
+	public void setIdMenu(int idMenu) {
 		this.idMenu = idMenu;
 	}
 
@@ -63,12 +47,28 @@ public class VAMenuEntity {
 		this.etiqueta = etiqueta;
 	}
 
-	public Boolean getEstado() {
+	public boolean isEstado() {
 		return estado;
 	}
 
-	public void setEstado(Boolean estado) {
+	public void setEstado(boolean estado) {
 		this.estado = estado;
+	}
+
+	public int getOrden() {
+		return orden;
+	}
+
+	public void setOrden(int orden) {
+		this.orden = orden;
+	}
+
+	public String getIcono() {
+		return icono;
+	}
+
+	public void setIcono(String icono) {
+		this.icono = icono;
 	}
 
 	public List<VAFormularioEntity> getFormularios() {

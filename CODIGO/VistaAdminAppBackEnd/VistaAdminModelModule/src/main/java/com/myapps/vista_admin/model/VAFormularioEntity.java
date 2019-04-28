@@ -17,15 +17,15 @@ public class VAFormularioEntity {
 //	@SequenceGenerator(name = "SEQ_VA_FORMULARIOS_GENERATOR", sequenceName = "SEQ_VA_FORMULARIOS", allocationSize = 1)
 //	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_VA_FORMULARIOS_GENERATOR")
 	@Column(name = "ID_FORMULARIO")
-	private Integer idFormulario;
+	private int idFormulario;
 	@Column
 	private String etiqueta;
 	@Column
-	private Integer nivel;
+	private int nivel;
 	@Column
 	private String url;
 	@Column
-	private Boolean estado;
+	private boolean estado;
 	@Column
 	private String icono;
 	@JsonIgnore
@@ -41,14 +41,6 @@ public class VAFormularioEntity {
 		this.idFormulario = idFormulario;
 	}
 
-	public String getIcono() {
-		return icono;
-	}
-
-	public void setIcono(String icono) {
-		this.icono = icono;
-	}
-
 	public String getEtiqueta() {
 		return etiqueta;
 	}
@@ -57,11 +49,11 @@ public class VAFormularioEntity {
 		this.etiqueta = etiqueta;
 	}
 
-	public Integer getNivel() {
+	public int getNivel() {
 		return nivel;
 	}
 
-	public void setNivel(Integer nivel) {
+	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
 
@@ -73,16 +65,20 @@ public class VAFormularioEntity {
 		this.url = url;
 	}
 
-	public void setIdFormulario(Integer idFormulario) {
-		this.idFormulario = idFormulario;
-	}
-
-	public Boolean getEstado() {
+	public boolean isEstado() {
 		return estado;
 	}
 
-	public void setEstado(Boolean estado) {
+	public void setEstado(boolean estado) {
 		this.estado = estado;
+	}
+
+	public String getIcono() {
+		return icono;
+	}
+
+	public void setIcono(String icono) {
+		this.icono = icono;
 	}
 
 	public VAMenuEntity getMenu() {

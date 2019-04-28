@@ -18,7 +18,7 @@ public class VAAccesoEntity {
 	@SequenceGenerator(name = "SEQ_VA_ACCESOS_GENERATOR", sequenceName = "SEQ_VA_ACCESOS", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_VA_ACCESOS_GENERATOR")
 	@Column(name = "ID_ACCESO")
-	private Integer idAcceso;
+	private int idAcceso;
 	@ManyToOne
 	@JoinColumn(name = "FORMULARIO", referencedColumnName = "ID_FORMULARIO", nullable = false)
 	private VAFormularioEntity formulario;
@@ -26,11 +26,11 @@ public class VAAccesoEntity {
 	@JoinColumn(name = "ROL", referencedColumnName = "ID_ROL", nullable = false)
 	private VARolEntity rol;
 
-	public Integer getIdAcceso() {
+	public int getIdAcceso() {
 		return idAcceso;
 	}
 
-	public void setIdAcceso(Integer idAcceso) {
+	public void setIdAcceso(int idAcceso) {
 		this.idAcceso = idAcceso;
 	}
 
@@ -48,6 +48,11 @@ public class VAAccesoEntity {
 
 	public void setRol(VARolEntity rol) {
 		this.rol = rol;
+	}
+
+	@Override
+	public String toString() {
+		return "VAAccesoEntity [idAcceso=" + idAcceso + ", formulario=" + formulario + ", rol=" + rol + "]";
 	}
 
 }

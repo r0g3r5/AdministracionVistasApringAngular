@@ -13,4 +13,6 @@ public interface BusinessMaster<T> {
 	Long toRegister(T model);
 
 	Long toUpdate(T model);
+
+	int remove(long id);
 }
