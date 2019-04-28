@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { RolService } from "src/app/_service/rol.service";
 import { Rol } from "src/app/_model/rol";
 import { Router, ActivatedRoute } from "@angular/router";
+import { MessageService } from "primeng/api";
 
 @Component({
   selector: "app-roles-listar",
@@ -13,24 +14,34 @@ export class RolesListarComponent implements OnInit {
   constructor(
     private rolService: RolService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private messageService: MessageService
   ) {}
 
   ngOnInit() {
-    console.log("listando roles.....");
     this.rolService.searchByEstadoActived().subscribe(data => {
       this.roles = data;
-      console.log(JSON.stringify(this.roles));
     });
   }
-  navegarRolNuevo() {
+  nuevo() {
     this.router.navigate(["nuevo"], { relativeTo: this.route });
   }
   modificar(rol: Rol) {
-    console.log("modificar " + JSON.stringify(rol));
+    this.router.navigate([`${rol.idRol}/editar`], { relativeTo: this.route });
   }
 
-  remover(rol: Rol) {
+  borrar(rol: Rol) {
     console.log("eliminar " + JSON.stringify(rol));
+    this.rolService.borrar(rol.idRol).subscribe(data => {
+      this.router.navigate(["/adminvista/configuracion/roles"]);
+      this.rolService.guardar(rol).subscribe(data => {
+        console.log("respuesta " + data);
+        this.messageService.add({
+          severity: "success",
+          summary: "Exito",
+          detail: `Rol ${rol.nombre} borrado correctamente.`
+        });
+      });
+    });
   }
 }

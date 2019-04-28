@@ -5,9 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -15,10 +12,11 @@ import javax.persistence.Table;
 public class VAUsuarioEntity {
 
 	@Id
-	@SequenceGenerator(name = "SEQ_VA_USUARIOS_GENERATOR", sequenceName = "SEQ_VA_USUARIOS", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_VA_USUARIOS_GENERATOR")
-	@Column(name="ID_USUARIO")
-	private Long idUsuario;
+//	@SequenceGenerator(name = "SEQ_VA_USUARIOS_GENERATOR", sequenceName = "SEQ_VA_USUARIOS", allocationSize = 1)
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_VA_USUARIOS_GENERATOR")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_USUARIO")
+	private long idUsuario;
 	@Column
 	private String nombres;
 	@Column
@@ -28,16 +26,16 @@ public class VAUsuarioEntity {
 	@Column
 	private String clave;
 	@Column
-	private Boolean estado;
-	@ManyToOne
-	@JoinColumn(name = "ROL", referencedColumnName = "ID_ROL", nullable = false)
-	private VARolEntity rol;
+	private boolean estado;
 
-	public Long getIdUsuario() {
+//	@ManyToOne
+//	@JoinColumn(name = "ROL", referencedColumnName = "ID_ROL", nullable = false)
+//	private VARolEntity rol;
+	public long getIdUsuario() {
 		return idUsuario;
 	}
 
-	public void setIdUsuario(Long idUsuario) {
+	public void setIdUsuario(long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 
@@ -73,26 +71,26 @@ public class VAUsuarioEntity {
 		this.clave = clave;
 	}
 
-	public Boolean getEstado() {
+	public boolean isEstado() {
 		return estado;
 	}
 
-	public void setEstado(Boolean estado) {
+	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
 
-	public VARolEntity getRol() {
-		return rol;
-	}
-
-	public void setRol(VARolEntity rol) {
-		this.rol = rol;
-	}
-
-	@Override
-	public String toString() {
-		return "VAUsuarioEntity [idUsuario=" + idUsuario + ", nombres=" + nombres + ", apellidos=" + apellidos
-				+ ", nombreUsuario=" + nombreUsuario + ", clave=" + clave + ", estado=" + estado + ", rol=" + rol + "]";
-	}
+//	public VARolEntity getRol() {
+//		return rol;
+//	}
+//
+//	public void setRol(VARolEntity rol) {
+//		this.rol = rol;
+//	}
+//
+//	@Override
+//	public String toString() {
+//		return "VAUsuarioEntity [idUsuario=" + idUsuario + ", nombres=" + nombres + ", apellidos=" + apellidos
+//				+ ", nombreUsuario=" + nombreUsuario + ", clave=" + clave + ", estado=" + estado + ", rol=" + rol + "]";
+//	}
 
 }

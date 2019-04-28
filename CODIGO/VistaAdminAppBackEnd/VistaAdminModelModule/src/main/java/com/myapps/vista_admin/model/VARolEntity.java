@@ -15,22 +15,35 @@ public class VARolEntity {
 	@Id
 	@SequenceGenerator(name = "SEQ_VA_ROLES_GENERATOR", sequenceName = "SEQ_VA_ROLES", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_VA_ROLES_GENERATOR")
-	@Column(name="ID_ROL")
-	private Integer idRol;
+	@Column(name = "ID_ROL")
+	private int idRol;
 	@Column
 	private String nombre;
 	@Column
-	private Boolean estado;
+	private boolean estado;
 	@Column
 	private String descripcion;
 	@Column
-	private Boolean validaIp;
+	private boolean validaIp;
+	@Column
+	private boolean eliminar;
 
-	public Integer getIdRol() {
+	public static VARolEntity getInstanceByEntity(VARolEntity entity) {
+		VARolEntity rol = new VARolEntity();
+		rol.setIdRol(entity.getIdRol());
+		rol.setDescripcion(entity.getDescripcion());
+		rol.setNombre(entity.getNombre());
+		rol.setEliminar(entity.isEstado());
+		rol.setEstado(entity.isEstado());
+		rol.setValidaIp(entity.isValidaIp());
+		return rol;
+	}
+
+	public int getIdRol() {
 		return idRol;
 	}
 
-	public void setIdRol(Integer idRol) {
+	public void setIdRol(int idRol) {
 		this.idRol = idRol;
 	}
 
@@ -42,11 +55,11 @@ public class VARolEntity {
 		this.nombre = nombre;
 	}
 
-	public Boolean getEstado() {
+	public boolean isEstado() {
 		return estado;
 	}
 
-	public void setEstado(Boolean estado) {
+	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
 
@@ -58,18 +71,26 @@ public class VARolEntity {
 		this.descripcion = descripcion;
 	}
 
-	public Boolean getValidaIp() {
+	public boolean isValidaIp() {
 		return validaIp;
 	}
 
-	public void setValidaIp(Boolean validaIp) {
+	public void setValidaIp(boolean validaIp) {
 		this.validaIp = validaIp;
+	}
+
+	public boolean isEliminar() {
+		return eliminar;
+	}
+
+	public void setEliminar(boolean eliminar) {
+		this.eliminar = eliminar;
 	}
 
 	@Override
 	public String toString() {
-		return "AdminRolEntity [idRol=" + idRol + ", nombre=" + nombre + ", estado=" + estado + ", descripcion="
-				+ descripcion + ", validaIp=" + validaIp + "]";
+		return "VARolEntity [idRol=" + idRol + ", nombre=" + nombre + ", estado=" + estado + ", descripcion="
+				+ descripcion + ", validaIp=" + validaIp + ", eliminar=" + eliminar + "]";
 	}
 
 }
