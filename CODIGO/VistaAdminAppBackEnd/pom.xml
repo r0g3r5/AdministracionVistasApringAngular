@@ -25,6 +25,7 @@
 		<module>VistaAdminRepositoryModule</module>
 		<module>VistaAdminWebServiceModule</module>
 		<module>VistaAdminBusinessModule</module>
+		<module>VistaAdminCommons</module>
 	</modules>
 
 	<dependencies>
