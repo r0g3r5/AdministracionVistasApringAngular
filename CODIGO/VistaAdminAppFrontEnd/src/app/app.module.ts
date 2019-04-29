@@ -26,6 +26,8 @@ import { ContenedorComponent } from "./_templates/contenedor/contenedor.componen
 import { TableModule } from "primeng/table";
 import { InputSwitchModule } from "primeng/inputswitch";
 import { ToastModule } from "primeng/toast";
+import { TreeModule } from "primeng/tree";
+import { ConfigAccesosComponent } from "./pages/configuracion/config-accesos/config-accesos.component";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { ToastModule } from "primeng/toast";
     ConfigUsuariosComponent,
     RolesEditarComponent,
     RolesListarComponent,
-    ContenedorComponent
+    ContenedorComponent,
+    ConfigAccesosComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import { ToastModule } from "primeng/toast";
     MessageModule,
     TableModule,
     InputSwitchModule,
-    ToastModule
+    ToastModule,
+    TreeModule,
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

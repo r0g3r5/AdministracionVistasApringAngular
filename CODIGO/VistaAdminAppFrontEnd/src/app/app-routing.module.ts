@@ -6,6 +6,7 @@ import { ConfigRolesComponent } from "./pages/configuracion/config-roles/config-
 import { RolesEditarComponent } from "./pages/configuracion/config-roles/roles-editar/roles-editar.component";
 import { RolesListarComponent } from "./pages/configuracion/config-roles/roles-listar/roles-listar.component";
 import { ContenedorComponent } from "./_templates/contenedor/contenedor.component";
+import { ConfigAccesosComponent } from "./pages/configuracion/config-accesos/config-accesos.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "adminvista/seguridad/login", pathMatch: "full" },
@@ -24,7 +25,8 @@ const routes: Routes = [
           { path: "nuevo", component: RolesEditarComponent },
           { path: ":idRol/editar", component: RolesEditarComponent }
         ]
-      }
+      },
+      { path: "configuracion/:rol/acceso", component: ConfigAccesosComponent }
     ]
   }
 ];

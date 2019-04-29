@@ -14,5 +14,5 @@ public interface BusinessMaster<T> {
 
 	Long toUpdate(T model);
 
-	int remove(long id);
+	int remove(T model);
 }

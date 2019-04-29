@@ -4,4 +4,5 @@ export class Rol {
   estado: boolean;
   descripcion: string;
   validaIp: boolean;
+  eliminar:boolean;
 }

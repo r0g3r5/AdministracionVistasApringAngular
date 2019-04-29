@@ -31,8 +31,9 @@ export class RolesListarComponent implements OnInit {
   }
 
   borrar(rol: Rol) {
+    rol.eliminar = true;
     console.log("eliminar " + JSON.stringify(rol));
-    this.rolService.borrar(rol.idRol).subscribe(data => {
+    this.rolService.borrar(rol).subscribe(data => {
       this.router.navigate(["/adminvista/configuracion/roles"]);
       this.rolService.guardar(rol).subscribe(data => {
         console.log("respuesta " + data);
@@ -42,6 +43,12 @@ export class RolesListarComponent implements OnInit {
           detail: `Rol ${rol.nombre} borrado correctamente.`
         });
       });
+    });
+  }
+
+  modificarAcceso() {
+    this.router.navigate(["/adminvista/configuracion/ADMIN/acceso"], {
+      relativeTo: this.route
     });
   }
 }

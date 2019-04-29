@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,9 +29,9 @@ public class RolController {
 		return new ResponseEntity<>(rolBusiness.getById(idRol), HttpStatus.OK);
 	}
 
-	@DeleteMapping(value = "/borrar", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Integer> borrar(@RequestParam("idRol") long idRol) {
-		return new ResponseEntity<>(rolBusiness.remove(idRol), HttpStatus.OK);
+	@PostMapping(value = "/borrar", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Integer> borrar(@RequestBody VARolEntity rol) {
+		return new ResponseEntity<>(rolBusiness.remove(rol), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/searchByEstadoActived", produces = MediaType.APPLICATION_JSON_VALUE)

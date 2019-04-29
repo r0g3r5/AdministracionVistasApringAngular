@@ -2,18 +2,17 @@ package com.myapps.vista_admin.business.impl;
 
 import java.util.List;
 
-import javax.annotation.processing.RoundEnvironment;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.myapps.vista_admin.business.RolBusiness;
-import com.myapps.vista_admin.model.VAAccesoEntity;
 import com.myapps.vista_admin.model.VARolEntity;
 import com.myapps.vista_admin.repository.AccesoRespository;
 import com.myapps.vista_admin.repository.RolRepository;
 
 @Service
+//@Transactional(readOnly = true)
 public class RolBusinessImpl implements RolBusiness {
 
 	@Autowired
@@ -58,13 +57,20 @@ public class RolBusinessImpl implements RolBusiness {
 	}
 
 	@Override
-	public int remove(long idRol) {
+	public int remove(VARolEntity rol) {
 		int res = 0;
-			VARolEntity rolUpdate = rolRepository.findOne((int) idRol);
-			rolUpdate.setEliminar(true);
-			System.out.println("update " + rolRepository.save(VARolEntity.getInstanceByEntity(rolUpdate)));
-			res = 1;
-		
+//		VARolEntity rolUpdate = VARolEntity.getInstanceByEntity(rol);
+//		rolUpdate.setEliminar(true);
+		System.out.println(rol);
+		try {
+			rolRepository.save(rol);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("update ");
+		res = 1;
+
 		return res;
 	}
 

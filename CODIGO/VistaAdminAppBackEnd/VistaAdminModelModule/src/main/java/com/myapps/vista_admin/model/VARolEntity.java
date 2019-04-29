@@ -1,5 +1,7 @@
 package com.myapps.vista_admin.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "VA_ROLES")
-public class VARolEntity {
+public class VARolEntity implements Serializable{
 
 	@Id
 	@SequenceGenerator(name = "SEQ_VA_ROLES_GENERATOR", sequenceName = "SEQ_VA_ROLES", allocationSize = 1)
@@ -85,6 +87,49 @@ public class VARolEntity {
 
 	public void setEliminar(boolean eliminar) {
 		this.eliminar = eliminar;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((descripcion == null) ? 0 : descripcion.hashCode());
+		result = prime * result + (eliminar ? 1231 : 1237);
+		result = prime * result + (estado ? 1231 : 1237);
+		result = prime * result + idRol;
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		result = prime * result + (validaIp ? 1231 : 1237);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		VARolEntity other = (VARolEntity) obj;
+		if (descripcion == null) {
+			if (other.descripcion != null)
+				return false;
+		} else if (!descripcion.equals(other.descripcion))
+			return false;
+		if (eliminar != other.eliminar)
+			return false;
+		if (estado != other.estado)
+			return false;
+		if (idRol != other.idRol)
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		if (validaIp != other.validaIp)
+			return false;
+		return true;
 	}
 
 	@Override

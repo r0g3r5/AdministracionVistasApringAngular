@@ -6,6 +6,6 @@ import com.myapps.vista_admin.model.VAMenuEntity;
 
 public interface MenuBusiness extends BusinessMaster<VAMenuEntity> {
 
-//	List<AdminMenuEntity> getByRolAnd
-	
+	List<VAMenuEntity> getByRolAndAcceso(String rol);
+
 }

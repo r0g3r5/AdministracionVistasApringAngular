@@ -23,4 +23,9 @@ public class MenuController {
 	public ResponseEntity<List<VAMenuEntity>> listByRol(@RequestParam("rol") String rol) {
 		return new ResponseEntity<>(menuBusiness.getByAtribute(rol), HttpStatus.OK);
 	}
+
+	@GetMapping(value = "/listByRolAndAcces")
+	public ResponseEntity<List<VAMenuEntity>> listByRolAndAcces(@RequestParam("rol") String rol) {
+		return new ResponseEntity<>(menuBusiness.getByRolAndAcceso(rol), HttpStatus.OK);
+	}
 }

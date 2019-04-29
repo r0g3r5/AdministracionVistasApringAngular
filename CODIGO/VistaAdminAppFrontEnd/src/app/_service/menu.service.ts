@@ -18,4 +18,15 @@ export class MenuService {
     return this.http.get<Menu[]>(`${this.url}/listByRol`, { params: param });
   }
 
+  listByRolAndAcces(rol: string) {
+    return this.http.get<Menu[]>(`${this.url}/listByRolAndAcces`, {
+      params: this.generarRequestParamDeID(rol)
+    });
+  }
+
+  generarRequestParamDeID(rol: string): HttpParams {
+    let params = new HttpParams();
+    params = params.set("rol", `${rol}`);
+    return params;
+  }
 }

@@ -31,7 +31,7 @@ public class MenuBusinessImpl implements MenuBusiness {
 	@Override
 	public List<VAMenuEntity> getByAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return menuRepository.findAll();
 	}
 
 	public List<VAMenuEntity> obtenerMunusDeFormularioList(List<VAFormularioEntity> formularios) {
@@ -66,9 +66,16 @@ public class MenuBusinessImpl implements MenuBusiness {
 
 	@Override
 	public List<VAMenuEntity> getByAtribute(String rol) {
-		List<VAFormularioEntity> formularios = formRepository.findAll();// formRepository.findByRol(rol);
+		List<VAFormularioEntity> formularios = formRepository.findByRol(rol);
 		List<VAMenuEntity> menu = obtenerMunusDeFormularioList(formularios);
 		return cambiarOrdenarFormularioLisDeMenu(menu, formularios);
+	}
+
+	@Override
+	public List<VAMenuEntity> getByRolAndAcceso(String rol) {
+		List<VAMenuEntity> menu = getByAll();
+		System.out.println("sdfsdfsdfsdfsdfsdfd"+menu.size());
+		return menu;
 	}
 
 	@Override
@@ -84,7 +91,7 @@ public class MenuBusinessImpl implements MenuBusiness {
 	}
 
 	@Override
-	public int remove(long id) {
+	public int remove(VAMenuEntity id) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

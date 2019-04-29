@@ -26,10 +26,11 @@ export class RolService {
     return this.http.post(`${this.url}/guardar`, rol);
   }
 
-  borrar(idRol: number) {
-    return this.http.delete(`${this.url}/borrar`, {
-      params: this.generarRequestParamDeID(idRol)
-    });
+  borrar(rol: Rol) {
+    return this.http.post(`${this.url}/borrar`, rol);
+    // return this.http.delete(`${this.url}/borrar`, {
+    //   params: this.generarRequestParamDeID(idRol)
+    // });
   }
 
   generarRequestParamDeID(idRol: number): HttpParams {
