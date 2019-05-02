@@ -50,7 +50,7 @@ public class MenuBusinessImpl implements MenuBusiness {
 		System.out.println("nemus removidos " + menus);
 	}
 
-	public List<VAMenuEntity> cambiarOrdenarFormularioLisDeMenu(List<VAMenuEntity> menus,
+	public List<VAMenuEntity> ordenarFormulariosMenuPorNivel(List<VAMenuEntity> menus,
 			List<VAFormularioEntity> formularios) {
 		for (VAMenuEntity menu : menus) {
 			menu.getFormularios().clear();
@@ -68,14 +68,22 @@ public class MenuBusinessImpl implements MenuBusiness {
 	public List<VAMenuEntity> getByAtribute(String rol) {
 		List<VAFormularioEntity> formularios = formRepository.findByRol(rol);
 		List<VAMenuEntity> menu = obtenerMunusDeFormularioList(formularios);
-		return cambiarOrdenarFormularioLisDeMenu(menu, formularios);
+		return ordenarFormulariosMenuPorNivel(menu, formularios);
 	}
 
 	@Override
 	public List<VAMenuEntity> getByRolAndAcceso(String rol) {
-		List<VAMenuEntity> menu = getByAll();
-		System.out.println("sdfsdfsdfsdfsdfsdfd"+menu.size());
-		return menu;
+		List<VAMenuEntity> menuAll = getByAll();
+		System.out.println("sdfsdfsdfsdfsdfsdfd" + menuAll.size());
+		List<VAMenuEntity> menuByRol = getByAll();
+		menuAll.forEach(mall -> {
+			mall.getFormularios().forEach(fAll -> {
+				menuByRol.forEach(mRol -> {
+					fAll.setAccedido(mRol.getFormularios().contains(fAll));
+				});
+			});
+		});
+		return menuAll;
 	}
 
 	@Override

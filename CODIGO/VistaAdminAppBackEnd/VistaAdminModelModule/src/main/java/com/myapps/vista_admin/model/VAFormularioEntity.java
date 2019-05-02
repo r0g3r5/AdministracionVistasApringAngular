@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -32,6 +33,16 @@ public class VAFormularioEntity {
 	@ManyToOne
 	@JoinColumn(name = "MENU", nullable = true, referencedColumnName = "ID_MENU")
 	private VAMenuEntity menu;
+	@Transient
+	private boolean accedido;
+
+	public boolean isAccedido() {
+		return accedido;
+	}
+
+	public void setAccedido(boolean accedido) {
+		this.accedido = accedido;
+	}
 
 	public int getIdFormulario() {
 		return idFormulario;

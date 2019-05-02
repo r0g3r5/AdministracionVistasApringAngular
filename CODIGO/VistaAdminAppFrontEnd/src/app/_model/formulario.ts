@@ -8,4 +8,5 @@ export class Formulario {
   estado: boolean;
   icono: string;
   menu: Menu;
+  accedido: boolean;
 }

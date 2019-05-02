@@ -25,7 +25,10 @@ export class ConfigAccesosComponent implements OnInit {
         m.formularios.forEach(f => {
           menuHijo.push({
             label: f.etiqueta,
-            parent: menuPadre
+            parent: menuPadre,
+            draggable: f.accedido,
+            selectable: f.accedido,
+            leaf:false,
           });
         });
         menuPadre = { label: m.etiqueta, children: menuHijo };
