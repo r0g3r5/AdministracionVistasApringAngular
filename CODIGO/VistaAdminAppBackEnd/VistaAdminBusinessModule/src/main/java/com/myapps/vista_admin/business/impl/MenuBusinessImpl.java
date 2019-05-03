@@ -73,14 +73,11 @@ public class MenuBusinessImpl implements MenuBusiness {
 
 	@Override
 	public List<VAMenuEntity> getByRolAndAcceso(String rol) {
+		List<VAFormularioEntity> formRoles = formRepository.findByRol(rol);
 		List<VAMenuEntity> menuAll = getByAll();
-		System.out.println("sdfsdfsdfsdfsdfsdfd" + menuAll.size());
-		List<VAMenuEntity> menuByRol = getByAll();
-		menuAll.forEach(mall -> {
-			mall.getFormularios().forEach(fAll -> {
-				menuByRol.forEach(mRol -> {
-					fAll.setAccedido(mRol.getFormularios().contains(fAll));
-				});
+		menuAll.forEach(mAll -> {
+			mAll.getFormularios().forEach(fAll -> {
+				fAll.setAccedido(formRoles.contains(fAll));
 			});
 		});
 		return menuAll;

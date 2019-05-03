@@ -9,7 +9,7 @@ import { MenuService } from "src/app/_service/menu.service";
 })
 export class ConfigAccesosComponent implements OnInit {
   menu: TreeNode[] = [];
-  selectedFile: TreeNode;
+  selectedRoles: TreeNode[] = [];
 
   constructor(
     private menuService: MenuService,
@@ -18,7 +18,7 @@ export class ConfigAccesosComponent implements OnInit {
 
   ngOnInit() {
     this.menuService.listByRolAndAcces("ADMIN").subscribe(data => {
-      console.log("menus " + JSON.stringify(data));
+      // console.log("menus " + JSON.stringify(data));
       data.forEach(m => {
         let menuPadre: TreeNode;
         let menuHijo: TreeNode[] = [];
@@ -26,14 +26,22 @@ export class ConfigAccesosComponent implements OnInit {
           menuHijo.push({
             label: f.etiqueta,
             parent: menuPadre,
-            draggable: f.accedido,
-            selectable: f.accedido,
-            leaf:false,
+            partialSelected: f.accedido
+          });
+          menuHijo.forEach(s => {
+            if (s.partialSelected) {
+              console.log("ingreso a acceso");
+              s.partialSelected = false;
+              this.selectedRoles.push(s);
+            }
           });
         });
-        menuPadre = { label: m.etiqueta, children: menuHijo };
+        menuPadre = { label: m.etiqueta, children: menuHijo,expanded:true };
         this.menu.push(menuPadre);
       });
     });
+  }
+  onSelect() {
+    console.log(this.menu);
   }
 }

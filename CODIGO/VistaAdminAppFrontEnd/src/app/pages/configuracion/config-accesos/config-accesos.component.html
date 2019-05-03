@@ -2,5 +2,10 @@
 <p-tree
   [value]="menu"
   selectionMode="checkbox"
-  [(selection)]="selectedFiles2"
+  [(selection)]="selectedRoles"
 ></p-tree>
+
+<div style="margin-top: 8px">
+  <button pButton type="button" label="Actualizar" (click)="onSelect()" style="margin-right: .25em"></button>
+  <button pButton type="button" label="Collapse all" (click)="collapseAll()"></button>
+</div>

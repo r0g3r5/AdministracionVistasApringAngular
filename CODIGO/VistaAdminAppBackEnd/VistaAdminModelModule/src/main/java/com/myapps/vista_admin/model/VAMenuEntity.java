@@ -81,7 +81,8 @@ public class VAMenuEntity {
 
 	@Override
 	public String toString() {
-		return "AdminMenuEntity [idMenu=" + idMenu + ", etiqueta=" + etiqueta + ", estado=" + estado + "]";
+		return "VAMenuEntity [idMenu=" + idMenu + ", etiqueta=" + etiqueta + ", estado=" + estado + ", orden=" + orden
+				+ ", icono=" + icono +"]";
 	}
 
 }
