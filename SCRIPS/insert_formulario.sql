@@ -30,3 +30,5 @@ VALUES(nextval('seq_va_accesos'), 2, 1);
 INSERT INTO public.va_accesos
 (id_acceso, formulario, rol)
 VALUES(nextval('seq_va_accesos'), 3, 1);
+
+
